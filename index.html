@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Special Chicken Biryani Dashboard</title>
+
+  <!-- React and Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdf6f0;
+    }
+
+    header {
+      background-color: #d9534f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .dashboard {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #c9302c;
+    }
+
+    .biryani-img {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 400px;
+      object-fit: cover;
+      margin-top: 10px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .stat-box {
+      background-color: #f7c6c5;
+      padding: 10px;
+      border-radius: 6px;
+      flex: 1;
+      margin: 5px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    button {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c9302c;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Special Chicken Biryani Dashboard</h1>
+  </header>
+
+  <div id="root"></div>
+
+  <footer>
+    &copy; 2025 Biryani Lovers Co.
+  </footer>
+
+  <script type="text/babel">
+
+    const { useState } = React;
+
+    function BiryaniDashboard() {
+      const [orders, setOrders] = useState(58);
+      const [rating, setRating] = useState(4.7);
+      const [reviews, setReviews] = useState([
+        "Absolutely delicious!",
+        "Perfect spice level.",
+        "Best biryani in town.",
+      ]);
+
+      const handleOrder = () => {
+        setOrders(orders + 1);
+        alert("Order placed! Enjoy your biryani 🍽️");
+      };
+
+      return (
+        <div className="dashboard">
+          <div className="card">
+            <h2>Today's Special: Chicken Biryani</h2>
+            <p>
+              Fragrant basmati rice cooked with marinated chicken,
+              saffron, and a blend of authentic Indian spices.
+            </p>
+            <img
+              src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/chicken-biryani-recipe.jpg"
+              alt="Special Chicken Biryani"
+              className="biryani-img"
+            />
+            <div style={{ marginTop: "15px" }}>
+              <button onClick={handleOrder}>Order Now</button>
+            </div>
+          </div>
+
+          <div className="card">
+            <h2>Stats</h2>
+            <div className="stats">
+              <div className="stat-box">
+                <strong>{orders}</strong>
+                <div>Orders Today</div>
+              </div>
+              <div className="stat-box">
+                <strong>{rating}⭐</strong>
+                <div>Average Rating</div>
+              </div>
+              <div className="stat-box">
+                <strong>{reviews.length}</strong>
+                <div>Reviews</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h2>Customer Reviews</h2>
+            <ul>
+              {reviews.map((review, idx) => (
+                <li key={idx}>👉 {review}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<BiryaniDashboard />);
+
+  </script>
+</body>
+</html>
